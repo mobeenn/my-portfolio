@@ -77,22 +77,23 @@ export default function HeroSection() {
                   {/* Buttons */}
                   <div className="flex flex-wrap gap-4 justify-center ">
                      <a
-                        href="/resume.pdf"
+                        href="https://res.cloudinary.com/dgjwmmiz6/raw/upload/v1755679617/M-Mobeen-resume_w5pt0q.docx"
                         target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-3 bg-pink-500 text-white font-semibold rounded-full shadow-lg hover:bg-pink-600 transition"
+                        className="flex items-center gap-2 px-6 py-2.5 bg-pink-500 text-white font-semibold rounded-[8px] shadow-lg hover:bg-pink-600 transition"
                      >
                         <FiDownload size={20} />
                         Resume
                      </a>
 
-                     <a
-                        href="#projects"
-                        className="flex items-center gap-2 px-6 py-3 border-2 border-pink-500 text-pink-500 font-semibold rounded-full hover:bg-pink-500 hover:text-white transition"
-                     >
-                        <FiEye size={20} />
-                        View Projects
-                     </a>
+                     <button>
+                        <a
+                           href="#projects"
+                           className="flex items-center gap-2 px-6 py-2.5 border-2 border-pink-500 text-pink-500 font-semibold rounded-[8px] hover:bg-pink-500 hover:text-white transition"
+                        >
+                           <FiEye size={20} />
+                           View Projects
+                        </a>
+                     </button>
                   </div>
                </div>
 

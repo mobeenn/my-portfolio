@@ -109,9 +109,7 @@ export const FooterSection = () => {
                      <FooterLink href="mailto:ali@veracious.ai">
                         Email: mobeen0616@gmail.com
                      </FooterLink>
-                     <FooterLink href="#">
-                        Level 1, Devonshire House, One Mayfair Place, London, UK
-                     </FooterLink>
+                     <FooterLink href="#">Islamabad</FooterLink>
                   </FooterLinkGroup>
                </div>
             </div>
