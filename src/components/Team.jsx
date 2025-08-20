@@ -53,17 +53,19 @@ export const Team = () => {
                   {teamData.map((item) => (
                      <div
                         key={item.id}
-                        className="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition"
+                        className="group bg-white shadow-lg rounded-2xl p-6 transition-all duration-500 hover:bg-black hover:shadow-2xl"
                      >
                         <img
                            src={item.img}
                            alt={item.title}
-                           className="w-24 h-24 mx-auto rounded-full mb-4 object-cover"
+                           className="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-transparent group-hover:border-white transition-all duration-500"
                         />
-                        <h3 className="text-xl font-semibold mb-2">
+                        <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-white transition-colors duration-500">
                            {item.title}
                         </h3>
-                        <p className="text-gray-600 text-sm">{item.desc}</p>
+                        <p className="text-gray-600 text-sm group-hover:text-gray-300 transition-colors duration-500">
+                           {item.desc}
+                        </p>
                      </div>
                   ))}
                </div>
