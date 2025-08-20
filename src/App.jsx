@@ -10,6 +10,7 @@ import { Team } from "./components/Team";
 import { Contact } from "./components/Contact";
 import FunLoginPage from "./components/FunLoginPage";
 import { FooterSection } from "./components/FooterSection";
+import { CustomCursor } from "./components/CustomCursor";
 
 function App() {
    const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,6 +25,7 @@ function App() {
 
    return (
       <>
+         <CustomCursor />
          <Toaster position="top-center" reverseOrder={false} />
          <Header />
          <HeroSection />

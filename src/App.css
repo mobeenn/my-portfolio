@@ -1,1 +1,100 @@
 @import "tailwindcss";
+body {
+   cursor: none; /* hide default cursor */
+}
+/* for scroll bar */
+.custom-scroll::-webkit-scrollbar {
+   width: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+   background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+   background: rgba(255, 255, 255, 0.3);
+   border-radius: 10px;
+}
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+   background: rgba(255, 255, 255, 0.5);
+}
+
+/* hole scroll bar */
+/* index.css ya global.css me add karo */
+
+/* Scrollbar ka size */
+::-webkit-scrollbar {
+   width: 6px; /* vertical scrollbar width */
+   height: 6px; /* horizontal scrollbar height */
+}
+
+/* Track (background part) */
+::-webkit-scrollbar-track {
+   background: transparent;
+}
+
+/* Scroll thumb  */
+::-webkit-scrollbar-thumb {
+   background: rgba(255, 255, 255, 0.3);
+   border-radius: 10px;
+}
+
+/* Hover effect */
+::-webkit-scrollbar-thumb:hover {
+   background: rgba(255, 255, 255, 0.5);
+}
+
+html {
+   scrollbar-width: thin;
+   scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+/* custom cursosr */
+
+.custom-cursor {
+   position: fixed;
+   pointer-events: none;
+   transform: translate(-50%, -50%);
+   z-index: 9999;
+}
+
+/* Inner dot */
+.cursor-dot {
+   width: 8px;
+   height: 8px;
+   background: white;
+   border-radius: 50%;
+   box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+/* Outer ring (3D glass look) */
+.cursor-ring {
+   width: 40px;
+   height: 40px;
+   border: 2px solid rgba(255, 255, 255, 0.5);
+   border-radius: 50%;
+   background: rgba(255, 255, 255, 0.05);
+   backdrop-filter: blur(4px);
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+   animation: cursor-pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes cursor-pulse {
+   0%,
+   100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.8;
+   }
+   50% {
+      transform: translate(-50%, -50%) scale(1.2);
+      opacity: 0.5;
+   }
+}
