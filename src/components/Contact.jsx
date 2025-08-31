@@ -64,7 +64,7 @@ export const Contact = () => {
                      setFormState({ ...formState, name: e.target.value })
                   }
                   className="relative block w-full px-4 py-3 bg-white dark:bg-gray-800 border-0 rounded-lg focus:ring-2 focus:ring-blue-500 dark:text-white"
-                  placeholder="Your Name"
+                  placeholder="Your Full Name"
                   required
                />{" "}
             </div>{" "}

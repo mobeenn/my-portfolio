@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Lock, User } from "lucide-react";
 import heroImg from "../assets/logo2.png";
@@ -7,10 +7,80 @@ import toast from "react-hot-toast";
 export default function FunLoginPage({ onLogin }) {
    const [username, setUsername] = useState("");
    const [password, setPassword] = useState("");
+   const [voices, setVoices] = useState([]);
+
+   // Load available voices
+   useEffect(() => {
+      const loadVoices = () => {
+         const availableVoices = window.speechSynthesis.getVoices();
+         setVoices(availableVoices);
+      };
+      loadVoices();
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+   }, []);
+
+   // Speak function
+   const speak = (message) => {
+      const utterance = new SpeechSynthesisUtterance(message);
+
+      const femaleVoice = voices.find(
+         (voice) =>
+            voice.name.includes("Google US English Female") ||
+            voice.name.toLowerCase().includes("female")
+      );
+
+      if (femaleVoice) utterance.voice = femaleVoice;
+      utterance.lang = "en-US";
+      utterance.pitch = 1;
+      utterance.rate = 1;
+      window.speechSynthesis.speak(utterance);
+   };
+
+   // On page load speak
+   useEffect(() => {
+      const speakFun = () => {
+         speak("This is just a fun login page");
+      };
+
+      if (window.speechSynthesis.getVoices().length > 0) {
+         speakFun();
+      } else {
+         window.speechSynthesis.onvoiceschanged = speakFun;
+      }
+   }, [voices]);
 
    const handleLogin = (e) => {
       e.preventDefault();
-      toast(`Welcome back, ${username || "Guest"}! 🚀 (No real login 😆)`);
+
+      if (!username) {
+         toast.error("Please enter your email");
+         speak("Please enter your email");
+         return;
+      }
+
+      if (!password) {
+         toast.error("Please enter your password");
+         speak("Please enter your password");
+         return;
+      }
+
+      const namePart = username.includes("@")
+         ? username.split("@")[0]
+         : username;
+
+      // Unique fun messages
+      const messages = [
+         `Welcome ${namePart}! Your adventure through my portfolio begins now!`,
+         `Hey ${namePart}! You made it! Let’s dive into some magic of my projects!`,
+         `Ahoy ${namePart}! You’ve unlocked the gateway to my portfolio world. Explore wisely!`,
+         `Welcome ${namePart}! Brace yourself for some cool code and creative chaos!`,
+      ];
+
+      const welcomeMsg = messages[Math.floor(Math.random() * messages.length)];
+
+      toast.success(welcomeMsg);
+      speak(welcomeMsg);
+
       onLogin();
    };
 
