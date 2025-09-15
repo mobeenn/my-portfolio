@@ -35,6 +35,20 @@ export default function FunLoginPage({ onLogin }) {
       utterance.rate = 1;
       window.speechSynthesis.speak(utterance);
    };
+   // const speakTruth = (message) => {
+   //    const utterance = new SpeechSynthesisUtterance(message);
+   //    const maleVoice = voices.find(
+   //       (voice) =>
+   //          voice.name.include("Google Us english male") ||
+   //          voice.name.toLowerCase().includes("male")
+   //    );
+   //    if (maleVoice) utterance.voice = maleVoice;
+   //    utterance.lang = "en-US";
+   //    utterance.pitch = 1;
+   //    utterance.rate = 1;
+   //    window.speechSynthesis.speak(utterance);
+
+   // };
 
    // On page load speak
    useEffect(() => {
