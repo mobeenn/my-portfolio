@@ -1,41 +1,57 @@
 import { useState } from "react";
-import { Toaster } from "react-hot-toast";
-import "./App.css";
-import { About } from "./components/About";
-import { Header } from "./components/Header";
-import HeroSection from "./components/HeroSection";
-import { Projects } from "./components/Projects";
-import { Skills } from "./components/Skills";
-import { Team } from "./components/Team";
-import { Contact } from "./components/Contact";
-import FunLoginPage from "./components/FunLoginPage";
-import { FooterSection } from "./components/FooterSection";
-import { CustomCursor } from "./components/CustomCursor";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Projects from "./components/Projects";
+import Services from "./components/Services";
+import Skills from "./components/Skills";
+import Blogs from "./components/Blogs";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import BlogPost from "./pages/BlogPost";
 
 function App() {
-   const [isLoggedIn, setIsLoggedIn] = useState(false);
+   const [currentPage, setCurrentPage] = useState("home");
+   const [selectedBlogId, setSelectedBlogId] = useState(null);
 
-   const handleFakeLogin = () => {
-      setIsLoggedIn(true);
+   const handleBlogClick = (blogId) => {
+      setSelectedBlogId(blogId);
+      setCurrentPage("blog-detail");
+      window.scrollTo(0, 0);
    };
 
-   if (!isLoggedIn) {
-      return <FunLoginPage onLogin={handleFakeLogin} />;
+   const handleBackFromBlog = () => {
+      setCurrentPage("home");
+      setSelectedBlogId(null);
+
+      const blogsSection = document.getElementById("blog");
+      if (blogsSection) {
+         blogsSection.scrollIntoView({ behavior: "smooth" });
+      }
+   };
+
+   if (currentPage === "blog-detail" && selectedBlogId !== null) {
+      return (
+         <>
+            <Navbar onBlogClick={handleBackFromBlog} />
+            <BlogPost blogId={selectedBlogId} onBack={handleBackFromBlog} />
+            <Footer />
+         </>
+      );
    }
 
    return (
-      <>
-         <CustomCursor />
-         <Toaster position="top-center" reverseOrder={false} />
-         <Header />
-         <HeroSection />
+      <div className="min-h-screen">
+         <Navbar />
+         <Hero />
          <About />
-         <Skills />
          <Projects />
-         <Team />
+         <Services />
+         <Skills />
+         <Blogs onBlogClick={handleBlogClick} />
          <Contact />
-         <FooterSection />
-      </>
+         <Footer />
+      </div>
    );
 }
 

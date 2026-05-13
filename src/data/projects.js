@@ -1,0 +1,222 @@
+// export const projects = [
+//    {
+//       id: 1,
+//       title: "DeFi Analytics Dashboard",
+//       description:
+//          "A real-time DeFi analytics platform tracking liquidity pools, yield farming APYs, and cross-chain portfolio performance with live on-chain data.",
+//       category: "blockchain",
+//       techStack: [
+//          "React",
+//          "Ethers.js",
+//          "Web3.js",
+//          "Solidity",
+//          "Node.js",
+//          "MongoDB",
+//       ],
+//       liveLink: "#",
+//       githubLink: "#",
+//       role: "Full Stack Blockchain Developer",
+//       image: "https://images.pexels.com/photos/7567440/pexels-photo-7567440.jpeg?auto=compress&cs=tinysrgb&w=800",
+//    },
+//    {
+//       id: 2,
+//       title: "NFT Marketplace",
+//       description:
+//          "A full-featured NFT marketplace supporting ERC-721 and ERC-1155 tokens with lazy minting, auctions, and wallet-based authentication.",
+//       category: "blockchain",
+//       techStack: [
+//          "React",
+//          "Solidity",
+//          "IPFS",
+//          "Ethers.js",
+//          "Hardhat",
+//          "Node.js",
+//       ],
+//       liveLink: "#",
+//       githubLink: "#",
+//       role: "Smart Contract & Frontend Developer",
+//       image: "https://images.pexels.com/photos/8369648/pexels-photo-8369648.jpeg?auto=compress&cs=tinysrgb&w=800",
+//    },
+//    {
+//       id: 3,
+//       title: "E-Commerce Platform",
+//       description:
+//          "A scalable MERN e-commerce application with real-time inventory, Stripe payments, admin dashboard, and role-based access control.",
+//       category: "fullstack",
+//       techStack: ["React", "Node.js", "Express", "MongoDB", "JWT", "Stripe"],
+//       liveLink: "#",
+//       githubLink: "#",
+//       role: "Full Stack Developer",
+//       image: "https://images.pexels.com/photos/5632399/pexels-photo-5632399.jpeg?auto=compress&cs=tinysrgb&w=800",
+//    },
+//    {
+//       id: 4,
+//       title: "Token Staking Protocol",
+//       description:
+//          "An ERC-20 staking smart contract with time-locked rewards, compound interest, and governance voting built on Ethereum mainnet.",
+//       category: "blockchain",
+//       techStack: ["Solidity", "Hardhat", "OpenZeppelin", "Web3.js", "React"],
+//       liveLink: "#",
+//       githubLink: "#",
+//       role: "Smart Contract Developer",
+//       image: "https://images.pexels.com/photos/6771985/pexels-photo-6771985.jpeg?auto=compress&cs=tinysrgb&w=800",
+//    },
+//    {
+//       id: 5,
+//       title: "Task Management App",
+//       description:
+//          "A collaborative project management tool with real-time updates, drag-and-drop Kanban boards, and team workspaces powered by Socket.io.",
+//       category: "fullstack",
+//       techStack: [
+//          "React",
+//          "Node.js",
+//          "Express",
+//          "MongoDB",
+//          "Socket.io",
+//          "Redis",
+//       ],
+//       liveLink: "#",
+//       githubLink: "#",
+//       role: "Full Stack Developer",
+//       image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800",
+//    },
+//    {
+//       id: 6,
+//       title: "Developer Portfolio UI",
+//       description:
+//          "A pixel-perfect, responsive portfolio template with dark mode, smooth animations, and optimized performance built with React and Tailwind CSS.",
+//       category: "frontend",
+//       techStack: ["React", "Tailwind CSS", "TypeScript", "Vite"],
+//       liveLink: "#",
+//       githubLink: "#",
+//       role: "Frontend Developer",
+//       image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
+//    },
+// ];
+
+export const projects = [
+   {
+      id: 1,
+      title: "AuditAI",
+      description:
+         "An AI-powered smart contract auditing platform that detects vulnerabilities like reentrancy, DoS, access control flaws, and generates exploit scenarios with actionable fixes. Every audit report is hashed and stored on-chain for transparency and trust.",
+      category: "blockchain",
+      techStack: [
+         "React",
+         "Node.js",
+         "Express.js",
+         "MongoDB",
+         "Solidity",
+         "OpenAI API",
+         "Web3.js",
+         "Ethers.js",
+      ],
+      liveLink: "#",
+      githubLink: "#",
+      role: "Founder | Full Stack Blockchain Developer",
+      image: "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800",
+   },
+
+   {
+      id: 2,
+      title: "EnPay - Multi Chain Custodial Wallet",
+      description:
+         "Built a multi-chain custodial crypto wallet supporting Ethereum, BNB Chain, Polygon, Arbitrum, Solana, USDT (ERC-20), and USDC (BEP-20). Implemented deposit/withdrawal workflows, transaction monitoring, balance reconciliation, and virtual card integration for crypto spending.",
+      category: "blockchain",
+      techStack: [
+         "React.js",
+         "Node.js",
+         "Express.js",
+         "MongoDB",
+         "Ethers.js",
+         "Solana Web3 SDK",
+         "Alchemy API",
+         "Marqeta API",
+      ],
+      liveLink: "https://www.enpaying.com/",
+      githubLink: "#",
+      role: "Full Stack Blockchain Developer",
+      image: "https://images.pexels.com/photos/7567440/pexels-photo-7567440.jpeg?auto=compress&cs=tinysrgb&w=800",
+   },
+
+   {
+      id: 3,
+      title: "Bits & Algorithm - Digital Will System",
+      description:
+         "Developed a blockchain-powered digital will platform where users can securely store legal documents on IPFS and manage role-based access through XRP blockchain integration.",
+      category: "blockchain",
+      techStack: [
+         "React.js",
+         "Node.js",
+         "Express.js",
+         "XRP Blockchain",
+         "Gem Wallet",
+         "IPFS",
+         "MongoDB",
+      ],
+      liveLink: "https://bits-and-algorithms-user-panel.vercel.app/",
+      githubLink: "#",
+      role: "Full Stack Developer",
+      image: "https://images.pexels.com/photos/8369648/pexels-photo-8369648.jpeg?auto=compress&cs=tinysrgb&w=800",
+   },
+
+   {
+      id: 4,
+      title: "InclusiveDFi - Fundraising DApp",
+      description:
+         "A decentralized crowdfunding platform that allows creators to launch ICO tokens, raise funds, and manage on-chain transactions with secure wallet authentication and token distribution.",
+      category: "blockchain",
+      techStack: [
+         "React.js",
+         "Node.js",
+         "Express.js",
+         "MongoDB",
+         "Web3.js",
+         "MetaMask",
+         "Solidity",
+      ],
+      liveLink: "http://100.29.45.154:3000/",
+      githubLink: "#",
+      role: "Full Stack Blockchain Developer",
+      image: "https://images.pexels.com/photos/6771985/pexels-photo-6771985.jpeg?auto=compress&cs=tinysrgb&w=800",
+   },
+
+   {
+      id: 5,
+      title: "PAPU.AI",
+      description:
+         "Built a responsive frontend for an AI-powered media generation platform and integrated three Python-based AI models through REST APIs for seamless content generation.",
+      category: "frontend",
+      techStack: [
+         "React.js",
+         "JavaScript",
+         "REST APIs",
+         "CSS",
+         "Python API Integration",
+      ],
+      liveLink: "https://papu.ai/",
+      githubLink: "#",
+      role: "Frontend Developer",
+      image: "https://images.pexels.com/photos/5632399/pexels-photo-5632399.jpeg?auto=compress&cs=tinysrgb&w=800",
+   },
+
+   {
+      id: 6,
+      title: "MERN Admin Dashboard",
+      description:
+         "Built a scalable admin dashboard with authentication, role-based access control, analytics, and CRUD operations for enterprise workflow management.",
+      category: "fullstack",
+      techStack: [
+         "React.js",
+         "Node.js",
+         "Express.js",
+         "MongoDB",
+         "JWT",
+         "Chart.js",
+      ],
+      liveLink: "#",
+      githubLink: "#",
+      role: "Full Stack Developer",
+      image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
+   },
+];

@@ -1,95 +1,253 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import {
+   GraduationCap,
+   Briefcase,
+   User,
+   MapPin,
+   Coffee,
+   Star,
+} from "lucide-react";
 
-export const About = () => {
-   const [ref, inView] = useInView({
-      triggerOnce: true,
-      threshold: 0.1,
-   });
+const stats = [
+   { label: "Years Experience", value: "2+", icon: Briefcase },
+   { label: "Projects Delivered", value: "20+", icon: Star },
+   { label: "Smart Contracts", value: "10+", icon: Coffee },
+];
+
+function About() {
    return (
-      <section
-         ref={ref}
-         id="about"
-         className="w-full bg-[#0a0f1f] text-white sm:py-16 px-6 md:px-20"
-      >
-         <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-         >
-            <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-20">
-               {/* Left Side */}
-               <div className="md:w-1/3 w-full space-y-6">
-                  <h2 className="text-3xl md:text-4xl font-bold text-pink-500">
-                     Profile
-                  </h2>
-                  <p className="text-gray-300">
-                     BS in Computer Science with a focus on modern web
-                     technologies and blockchain development.
-                  </p>
-                  <h3 className="text-2xl font-semibold text-pink-400">
-                     Development
-                  </h3>
-                  <p className="text-gray-300">
-                     Passionate about creating modern web applications using the
-                     MERN stack and exploring blockchain technologies.
-                  </p>
-                  <h3 className="text-2xl font-semibold text-pink-400">
-                     Experience
-                  </h3>
-                  <p className="text-gray-300">
-                     Full-time developer at Infini8AI, working on AI projects
-                     and modern web applications.
-                  </p>
+      <section id="about" className="section-padding">
+         <div className="container-max">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+               <div className="relative">
+                  <div className="relative w-full max-w-md mx-auto lg:mx-0">
+                     <div
+                        className="absolute -top-3 -left-3 w-full h-full rounded-2xl opacity-40"
+                        style={{
+                           background:
+                              "linear-gradient(135deg, #0f7d86 0%, #6bcfd1 100%)",
+                        }}
+                     ></div>
+
+                     <div
+                        className="relative rounded-2xl overflow-hidden"
+                        style={{
+                           border: "2px solid rgba(107, 207, 209, 0.2)",
+                           boxShadow: "0 24px 48px rgba(0, 0, 0, 0.4)",
+                        }}
+                     >
+                        <img
+                           src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=600"
+                           alt="About Me"
+                           className="w-full h-72 object-cover"
+                        />
+
+                        <div
+                           className="p-6"
+                           style={{ background: "rgba(17, 27, 29, 0.95)" }}
+                        >
+                           <div className="flex items-center gap-2 mb-2">
+                              <MapPin size={14} style={{ color: "#6bcfd1" }} />
+                              <span
+                                 className="text-sm"
+                                 style={{ color: "#606f80" }}
+                              >
+                                 Available Worldwide · Remote
+                              </span>
+                           </div>
+
+                           <div className="grid grid-cols-3 gap-4 mt-4">
+                              {stats.map(({ label, value, icon: Icon }) => (
+                                 <div key={label} className="text-center">
+                                    <div
+                                       className="text-2xl font-bold mb-0.5"
+                                       style={{ color: "#6bcfd1" }}
+                                    >
+                                       {value}
+                                    </div>
+
+                                    <div
+                                       className="text-xs leading-tight"
+                                       style={{ color: "#606f80" }}
+                                    >
+                                       {label}
+                                    </div>
+
+                                    <Icon
+                                       size={14}
+                                       className="mx-auto mt-1"
+                                       style={{ color: "#0f7d86" }}
+                                    />
+                                 </div>
+                              ))}
+                           </div>
+                        </div>
+                     </div>
+                  </div>
                </div>
 
-               {/* Right Side */}
-               <div className="md:w-2/3 w-full space-y-6 text-balance">
-                  <h2 className="text-4xl font-bold text-pink-500">About Me</h2>
-                  <p className="text-gray-300 text-lg ">
-                     Hi, I’m{" "}
-                     <motion.span
-                        className="text-pink-400 font-semibold inline-block"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
+               <div>
+                  <div className="accent-line"></div>
+
+                  <h2 className="section-title">About Me</h2>
+
+                  <p className="section-subtitle">
+                     Passionate developer bridging Web2 and Web3
+                  </p>
+
+                  <p
+                     className="text-base leading-relaxed mb-6"
+                     style={{
+                        color: "#a0b4c0",
+                        lineHeight: "1.85",
+                     }}
+                  >
+                     I'm a Full Stack Developer with a deep specialization in
+                     MERN stack and blockchain technologies. Over the past 2
+                     years, I've built production-ready web applications and
+                     deployed smart contracts that interact with real financial
+                     value on Ethereum mainnet.
+                  </p>
+
+                  <p
+                     className="text-base leading-relaxed mb-8"
+                     style={{
+                        color: "#a0b4c0",
+                        lineHeight: "1.85",
+                     }}
+                  >
+                     I believe the future of the internet is decentralized, and
+                     I'm passionate about building the tools and infrastructure
+                     that will get us there. Whether it's a high-performance
+                     REST API or a gas-optimized DeFi protocol, I bring the same
+                     attention to detail and engineering rigor to every project.
+                  </p>
+
+                  <div className="space-y-4 mb-8">
+                     <div
+                        className="flex items-start gap-4 p-4 rounded-xl"
+                        style={{
+                           background: "rgba(255,255,255,0.04)",
+                           border: "1px solid rgba(107,207,209,0.12)",
+                        }}
                      >
-                        Muhammad Mobeen
-                     </motion.span>{" "}
-                     – a full-stack developer specializing in{" "}
-                     <span className="text-pink-400 font-semibold">
-                        <motion.span
-                           className="text-pink-400 font-semibold inline-block"
-                           initial={{ opacity: 0, y: 20 }}
-                           animate={{ opacity: 1, y: 0 }}
-                           transition={{ duration: 0.6, ease: "easeOut" }}
+                        <div
+                           className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                           style={{
+                              background: "rgba(15, 125, 134, 0.2)",
+                           }}
                         >
-                           MERN stack, Solidity, and Web3.js
-                        </motion.span>
-                     </span>
-                     . I combine my passion for blockchain and AI to deliver
-                     modern, efficient, and innovative web solutions.
-                  </p>
-                  <p className="text-gray-300 text-lg">
-                     I have hands-on experience in backend integration, AI
-                     integration, and blockchain integration. At CryptoKoder, I
-                     developed smart contracts for ICO tokens, tested them
-                     rigorously, and implemented blockchain integrations. I’ve
-                     also contributed to projects like Inclusive DeFi and
-                     Bits&Algorithm, integrating GEm Wallet and MetaMask for
-                     seamless user experiences.
-                  </p>
-                  <p className="text-gray-300 text-lg ">
-                     Currently, I’m working as a frontend developer at
-                     Infini8AI, focusing on AI integration, Stripe integration,
-                     and building interactive web applications. I approach every
-                     project creatively and efficiently, ensuring client-focused
-                     solutions that solve real-world problems.
-                  </p>
+                           <GraduationCap
+                              size={18}
+                              style={{ color: "#6bcfd1" }}
+                           />
+                        </div>
+
+                        <div>
+                           <h4
+                              className="font-semibold mb-0.5"
+                              style={{ color: "#f8fafc" }}
+                           >
+                              Education
+                           </h4>
+
+                           <p className="text-sm" style={{ color: "#606f80" }}>
+                              Bachelor of Science in Computer Science
+                           </p>
+
+                           <p
+                              className="text-xs mt-0.5"
+                              style={{ color: "#4a6564" }}
+                           >
+                              2020 – 2024 · GPA: 3.8 / 4.0
+                           </p>
+                        </div>
+                     </div>
+
+                     <div
+                        className="flex items-start gap-4 p-4 rounded-xl"
+                        style={{
+                           background: "rgba(255,255,255,0.04)",
+                           border: "1px solid rgba(107,207,209,0.12)",
+                        }}
+                     >
+                        <div
+                           className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                           style={{
+                              background: "rgba(15, 125, 134, 0.2)",
+                           }}
+                        >
+                           <Briefcase size={18} style={{ color: "#6bcfd1" }} />
+                        </div>
+
+                        <div>
+                           <h4
+                              className="font-semibold mb-0.5"
+                              style={{ color: "#f8fafc" }}
+                           >
+                              Experience
+                           </h4>
+
+                           <p className="text-sm" style={{ color: "#606f80" }}>
+                              2+ Years — Full Stack MERN + Blockchain
+                              Development
+                           </p>
+
+                           <p
+                              className="text-xs mt-0.5"
+                              style={{ color: "#4a6564" }}
+                           >
+                              Freelance & Open Source · 2022 – Present
+                           </p>
+                        </div>
+                     </div>
+
+                     <div
+                        className="flex items-start gap-4 p-4 rounded-xl"
+                        style={{
+                           background: "rgba(255,255,255,0.04)",
+                           border: "1px solid rgba(107,207,209,0.12)",
+                        }}
+                     >
+                        <div
+                           className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                           style={{
+                              background: "rgba(15, 125, 134, 0.2)",
+                           }}
+                        >
+                           <User size={18} style={{ color: "#6bcfd1" }} />
+                        </div>
+
+                        <div>
+                           <h4
+                              className="font-semibold mb-0.5"
+                              style={{ color: "#f8fafc" }}
+                           >
+                              Focus Areas
+                           </h4>
+
+                           <p className="text-sm" style={{ color: "#606f80" }}>
+                              DeFi protocols · NFT systems · MERN SaaS apps
+                           </p>
+
+                           <p
+                              className="text-xs mt-0.5"
+                              style={{ color: "#4a6564" }}
+                           >
+                              Smart contract auditing · Gas optimization
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+
+                  <a href="#projects" className="btn-primary">
+                     See My Work
+                  </a>
                </div>
             </div>
-         </motion.h2>
+         </div>
       </section>
    );
-};
+}
+
+export default About;

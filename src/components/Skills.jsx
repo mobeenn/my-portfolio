@@ -1,59 +1,218 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-
-const skills = [
-   { name: "MongoDB", color: "from-green-400 to-green-600" },
-   { name: "ReactJS", color: "from-blue-400 to-blue-600" },
-   { name: "NodeJS", color: "from-green-600 to-green-800" },
-   { name: "ExpressJS", color: "from-gray-600 to-gray-800" },
-   { name: "Tailwind CSS", color: "from-cyan-400 to-cyan-600" },
-   { name: "Web3.js", color: "from-purple-400 to-purple-600" },
-   { name: "ERC-20 Token", color: "from-yellow-400 to-yellow-600" },
-   { name: "Solidity", color: "from-gray-700 to-gray-900" },
-   { name: "AI Integration", color: "from-pink-400 to-pink-600" },
-   { name: "Stripe Integration", color: "from-indigo-400 to-indigo-600" },
-   { name: "Smart Contract Testing", color: "from-red-400 to-red-600" },
-   { name: "Build DApps", color: "from-purple-600 to-purple-800" },
+const skillGroups = [
+   {
+      title: "Frontend",
+      color: "#6bcfd1",
+      bgColor: "rgba(107, 207, 209, 0.08)",
+      borderColor: "rgba(107, 207, 209, 0.2)",
+      skills: [
+         { name: "React.js", level: 90 },
+         { name: "TypeScript", level: 86 },
+         { name: "Tailwind CSS", level: 92 },
+         { name: "Next.js", level: 80 },
+      ],
+   },
+   {
+      title: "Backend",
+      color: "#0f7d86",
+      bgColor: "rgba(15, 125, 134, 0.08)",
+      borderColor: "rgba(15, 125, 134, 0.25)",
+      skills: [
+         { name: "Node.js", level: 88 },
+         { name: "Express.js", level: 87 },
+         { name: "MongoDB", level: 85 },
+         { name: "REST APIs", level: 90 },
+      ],
+   },
+   {
+      title: "Blockchain",
+      color: "#4a9b9c",
+      bgColor: "rgba(74, 155, 156, 0.08)",
+      borderColor: "rgba(74, 155, 156, 0.25)",
+      skills: [
+         { name: "Solidity", level: 82 },
+         { name: "Web3.js", level: 84 },
+         { name: "Ethers.js", level: 83 },
+         { name: "Hardhat", level: 78 },
+      ],
+   },
+   {
+      title: "Web3 Standards",
+      color: "#2d8a8e",
+      bgColor: "rgba(45, 138, 142, 0.08)",
+      borderColor: "rgba(45, 138, 142, 0.25)",
+      skills: [
+         { name: "ERC-20 Tokens", level: 85 },
+         { name: "ERC-721 NFTs", level: 82 },
+         { name: "Smart Contracts", level: 83 },
+         { name: "Wallet Integration", level: 86 },
+      ],
+   },
 ];
 
-export const Skills = () => {
-   const [ref, inView] = useInView({
-      triggerOnce: true,
-      threshold: 0.1,
-   });
-   return (
-      <section id="skills" ref={ref} className="py-10 bg-[#0a0f1f]">
-         <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-3xl font-bold text-center mb-12 dark:text-white"
-         >
-            Skills & Expertise
-         </motion.h2>
+const techLogos = [
+   { name: "React", emoji: "⚛️" },
+   { name: "Node.js", emoji: "🟢" },
+   { name: "MongoDB", emoji: "🍃" },
+   { name: "Solidity", emoji: "🔷" },
+   { name: "Web3.js", emoji: "🌐" },
+   { name: "Ethers.js", emoji: "⚡" },
+   { name: "TypeScript", emoji: "🔵" },
+   { name: "Express", emoji: "🚂" },
+   { name: "Hardhat", emoji: "🔨" },
+   { name: "IPFS", emoji: "📦" },
+];
 
-         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mx-8 xl:mx-[180px] text-nowrap text-[12px] sm:text-[16px]">
-            {skills.map((skill, index) => (
-               <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="relative group"
-               >
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-                  <button
-                     className={`relative w-full px-6 py-4 bg-gradient-to-r ${skill.color} rounded-lg transform transition-all duration-300 hover:scale-105 cursor-default`}
+/* ===================== SKILL BAR ===================== */
+function SkillBar({ name, level, color }) {
+   const [width, setWidth] = useState(0);
+   const ref = useRef(null);
+
+   useEffect(() => {
+      const observer = new IntersectionObserver(
+         ([entry]) => {
+            if (entry.isIntersecting) {
+               setTimeout(() => setWidth(level), 100);
+            }
+         },
+         { threshold: 0.3 },
+      );
+
+      if (ref.current) observer.observe(ref.current);
+      return () => observer.disconnect();
+   }, [level]);
+
+   return (
+      <div ref={ref} className="mb-4 last:mb-0">
+         <div className="flex justify-between items-center mb-1.5">
+            <span className="text-sm font-medium" style={{ color: "#f8fafc" }}>
+               {name}
+            </span>
+            <span className="text-xs font-medium" style={{ color }}>
+               {level}%
+            </span>
+         </div>
+
+         <div
+            className="h-1.5 rounded-full overflow-hidden"
+            style={{ background: "rgba(255,255,255,0.08)" }}
+         >
+            <div
+               className="h-full rounded-full transition-all duration-1000 ease-out"
+               style={{
+                  width: `${width}%`,
+                  background: `linear-gradient(90deg, ${color}99, ${color})`,
+               }}
+            />
+         </div>
+      </div>
+   );
+}
+
+/* ===================== MAIN COMPONENT ===================== */
+export default function Skills() {
+   return (
+      <section
+         id="skills"
+         className="section-padding"
+         style={{ background: "rgba(0,0,0,0.15)" }}
+      >
+         <div className="container-max">
+            {/* Heading */}
+            <div className="text-center mb-14">
+               <div className="accent-line mx-auto"></div>
+               <h2 className="section-title">Technical Skills</h2>
+               <p className="section-subtitle">
+                  Technologies I work with day-to-day
+               </p>
+            </div>
+
+            {/* Skill Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+               {skillGroups.map((group) => (
+                  <div
+                     key={group.title}
+                     className="rounded-2xl p-6"
+                     style={{
+                        background: group.bgColor,
+                        border: `1px solid ${group.borderColor}`,
+                     }}
                   >
-                     <span className="font-semibold text-white">
-                        {skill.name}
-                     </span>
-                  </button>
-               </motion.div>
-            ))}
+                     <div className="flex items-center gap-2 mb-5">
+                        <div
+                           className="w-2.5 h-2.5 rounded-full"
+                           style={{ background: group.color }}
+                        />
+                        <h3
+                           className="font-semibold text-sm uppercase tracking-wider"
+                           style={{ color: group.color }}
+                        >
+                           {group.title}
+                        </h3>
+                     </div>
+
+                     {group.skills.map((skill) => (
+                        <SkillBar
+                           key={skill.name}
+                           name={skill.name}
+                           level={skill.level}
+                           color={group.color}
+                        />
+                     ))}
+                  </div>
+               ))}
+            </div>
+
+            {/* Tech Logos */}
+            <div
+               className="rounded-2xl p-6"
+               style={{
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(107,207,209,0.1)",
+               }}
+            >
+               <h3
+                  className="text-center text-sm font-medium uppercase tracking-widest mb-6"
+                  style={{ color: "#606f80" }}
+               >
+                  Technologies & Tools
+               </h3>
+
+               <div className="flex flex-wrap justify-center gap-3">
+                  {techLogos.map((tech) => (
+                     <div
+                        key={tech.name}
+                        className="flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 cursor-default"
+                        style={{
+                           background: "rgba(255,255,255,0.05)",
+                           border: "1px solid rgba(107,207,209,0.15)",
+                        }}
+                        onMouseEnter={(e) => {
+                           e.currentTarget.style.borderColor =
+                              "rgba(107,207,209,0.4)";
+                           e.currentTarget.style.background =
+                              "rgba(107,207,209,0.08)";
+                        }}
+                        onMouseLeave={(e) => {
+                           e.currentTarget.style.borderColor =
+                              "rgba(107,207,209,0.15)";
+                           e.currentTarget.style.background =
+                              "rgba(255,255,255,0.05)";
+                        }}
+                     >
+                        <span className="text-base">{tech.emoji}</span>
+                        <span
+                           className="text-sm font-medium"
+                           style={{ color: "#f8fafc" }}
+                        >
+                           {tech.name}
+                        </span>
+                     </div>
+                  ))}
+               </div>
+            </div>
          </div>
       </section>
    );
-};
+}
